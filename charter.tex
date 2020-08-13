@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Control Inteligente de Volúmen para Sistema de Anuncios de Audio en Material Rodante} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,7 +11,7 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Gustavo Ramoscelli} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -64,10 +64,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
 1.1      &                                                                 & dd/mm/aaaa \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                     & dd/mm/aaaa \\ \hline
+1.2      &                                                                 & dd/mm/aaaa \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -84,7 +81,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de control de temperatura de un calefón, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá en el prototipo preliminar de un sistema de control digital de volúmen, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -107,9 +104,22 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+El presente proyecto pretende solucionar un problema que ocasiona quejas frecuentes por parte de los pasajeros de 
+distintas líneas de tren en la Argentina: la dificultad de escuchar correctamente los 
+anuncios que se reproducen por los altoparlantes de los trenes en movimiento. Debido al ruido 
+ambiente producido por distintas fuentes como por ejemplo: los propios pasajeros, los ruidos 
+mecánicos de la formación y los ruidos externos, en diversos puntos del recorrido se hace necesario 
+aumentar el volúmen del sistema de anuncios por audio ({\em audio announcement system \/} en inglés)
+en esa parte del trayecto. Sin embargo, aumentar
+demasiado el volúmen puede producir una sensación de aturdimiento, especialmente en tramos donde
+hay un nivel de ruido ambiente menor. Una solución para este desafío es la implementación de un
+control inteligente de volúmen. 
+
+El control inteligente de volúmen es algo que ya existe en el mercado 
+(ver \href{http://www.ervocom.ch/en/module/solutions/10-digital-audio-solution-for-passenger-announcements}
+{Passenger announcement for rolling stock}), sin embargo lo que se pretende es una solución a medida
+para las formaciones locales de origen chino. Se intentará conectar el prototipo a la red TCN de 
+material rodante para que el maquinista pueda ajustar distintos parámetros de ser necesario. 
 
 Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
 
@@ -136,7 +146,6 @@ La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en
 \vspace{25px}
 
 El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-\end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
