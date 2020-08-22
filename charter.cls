@@ -32,6 +32,7 @@
 \newcommand*{\examiner}[1]{\def\examname{#1}}
 \newcommand*{\posgrado}[1]{\def\degreename{#1}}
 \newcommand*{\autor}[1]{\def\authorname{#1}}
+\newcommand*{\pertenenciaAutor}[1]{\def\perteautsupname{#1}}
 \newcommand*{\addresses}[1]{\def\addressname{#1}}
 \newcommand*{\university}[1]{\def\univname{#1}}
 \newcommand*{\department}[1]{\def\deptname{#1}}
@@ -148,12 +149,12 @@
 	\centering \includegraphics[width=.7\textwidth]{./Figuras/logoFIUBA.png}
 	
 	\vspace{3cm}
-	{\Huge \textbf{\ttitle}} \\
+	{\linespread{1} \Huge \textbf{\ttitle}} \\
 	\vspace{3cm}
 	
 	\flushleft
 	{\normalsize Autor:\\}
-	{\Large \authorname \\}
+	{\Large \authorname \hspace{1px} (\perteautsupname) \\}
 	\vspace{1cm}
 	
 	{\normalsize Director:\\}

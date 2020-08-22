@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Control Inteligente de Volúmen para Sistema de Anuncios de Audio en Material Rodante} 
+\titulo{Control Automático de Ganancia para Sistema de Anuncios a Pasajeros} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,18 +11,19 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Gustavo Ramoscelli} 
+\autor{Ing. Gustavo Ramoscelli} 
+\pertenenciaAutor{UNS}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Dr. Ing. Ariel Lutenberg}
+\pertenenciaDirector{FIUBA, CONICET} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Ing. Martín Harris}
+\empresaCliente{SOFSE}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -35,7 +36,6 @@
 \fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
 \fechaFINALTrabajo{22 de diciembre de 2020}		%Fecha de defensa pública del trabajo final
-
 
 \begin{document}
 
@@ -104,66 +104,43 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-El presente proyecto pretende solucionar un problema que ocasiona quejas frecuentes por parte de los pasajeros de 
-distintas líneas de tren en la Argentina: la dificultad de escuchar correctamente los 
+El presente proyecto busca solucionar un problema que ocasiona quejas frecuentes por parte de los pasajeros de 
+distintas líneas de trenes de la Argentina: la dificultad de escuchar correctamente los 
 anuncios que se reproducen por los altoparlantes de los trenes en movimiento. Debido al ruido 
 ambiente producido por distintas fuentes como por ejemplo: los propios pasajeros, los ruidos 
 mecánicos de la formación y los ruidos externos, en diversos puntos del recorrido se hace necesario 
 aumentar el volúmen del sistema de anuncios por audio ({\em audio announcement system \/} en inglés)
-en esa parte del trayecto. Sin embargo, aumentar
-demasiado el volúmen puede producir una sensación de aturdimiento, especialmente en tramos donde
-hay un nivel de ruido ambiente menor. Una solución para este desafío es la implementación de un
-control inteligente de volúmen. 
+en ciertas partes del viaje. Sin embargo, aumentar demasiado el volumen puede producir una sensación 
+de aturdimiento, especialmente en tramos donde el nivel de ruido ambiente es menor. Por esto es deseable 
+instalar en las formaciones un {\em control automático de ganacia\/} (CAG). 
 
-El control inteligente de volúmen es algo que ya existe en el mercado 
-(ver \href{http://www.ervocom.ch/en/module/solutions/10-digital-audio-solution-for-passenger-announcements}
-{Passenger announcement for rolling stock}), sin embargo lo que se pretende es una solución a medida
-para las formaciones locales de origen chino. Se intentará conectar el prototipo a la red TCN de 
-material rodante para que el maquinista pueda ajustar distintos parámetros de ser necesario. 
-
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+Existen en el mercado internacional soluciones comerciales con prestaciones similares a las ofrecidas por 
+este proyecto, como por ejemplo este producto de fabricación extranjera: \href{http://www.ervocom.ch/en/module/solutions/10-digital-audio-solution-for-passenger-announcements}
+{Passenger announcement for rolling stock}. Sin embargo, hay varios motivos para desarrollar una solución nacional. Un
+motivo es el costo elevado de  los productos ferroviarios de importación respecto de los productos
+nacionales. Otro motivo es que las soluciones comerciales de productos
+ferroviarios en general usan tecnologías diferentes a las usadas en las formaciones locales lo que 
+implica hacer complejas adaptaciones del producto. Estos motivos justifican  la reallización del presente proyecto. 
 
 \vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
+\includegraphics[width=.7\textwidth]{./Figuras/arqCAG.png}
+\caption{Diagrama en bloques de la arquitectura del sistema CAG }
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
+Como se observa en la Fig. \ref{fig:diagBloques} el sistema a implementar está compuesto por dos subsistemas. Uno es el subsistema de medición de ruido ambiente que se encarga de obtener el nivel de ruido acústico del lugar donde está instalado para luego enviar este dato a travez de una red {\em mesh\/} de sensores. Se instalarán varios de estos subsistemas por cada formación de tren.
+
+El subsistema de control automático de ganacia recibe a travez de la red de sensores los niveles de ruido de cada punto de medición
+y con estos datos ajusta el nivel de la señal de audio que proviene del sistema de anuncios y que se envía a los altoparlantes del tren.  
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
-
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -172,112 +149,97 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	&   Coordinador General
+de Desarrollo     	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
 Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
+El Ing. Martin Harris se ofreció a comprar el material necesario.
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
- 
-Por ejemplo:
-\begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
-\end{itemize}
-
-\end{consigna}
-
-
+El Ing. Ariel Lutenberg se comprometió a realizar las gestiones de ingreso del proyecto en SOFSE para su aprobación. Muchas veces no está disponible por su apretada agenda.
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto consiste en desarrollar un sistema de control automático de ganacia del sistema de anuncios de audio de las formaciones de trenes. Tiene dos objetivos principales:
+\begin{itemize}
+\item Mejorar la calidad del audio de los anuncios a los pasajeros.
+\item Enviar los datos de reuido georeferenciados a los servidores de SOFSE para su análisis y registración.
+\end{itemize}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+Los dispositivos a desarrollar serán dos: el dispositivo de medición de ruido ambiente y el dispositivo de control automático de ganacia.
+El dispositivo de medición de ruido acústico obtendrá el dato del nivel de ruido acústico a partir del procesamiento de la señal de audio capatada por un micrófono. Luego transmitirá el dato del nivel de ruido acústico a través de una red {\em mesh\/} a un servidor central y al dispositvo del subsistema de control automático de ganacia.
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+El dispositivo que realiza el control automático de ganacia recibe el dato del nivel de ruido de todos los dispositivos de medición de ruido acústico instalados en la formación. Usando los datos de ruido acústico realizará el ajuste necesario en la ganacia de un amplificador de audio interno. Además el dispositivo tendrá una entrada de audio y una salida de audio. La entrada de audio del dipositivo estará conectada a la señal de audio del sistema de anuncios del tren y la salida de audio estará conectada a los parlantes instalados en el tren.
 
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+El sistema propuesto que se muestra en la Fig. \ref{fig:diagBloques} tiene  como meta a alcanzar  la implementación de los componentes de abajo:
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
-
+\begin{itemize}
+\item Desarrollo de firmware para microcontrolador del módulo principal del sistema.
+\item Desarrollo de firmware para microcontrolador del módulo de comunicaciones WIFI.
+\item Desarrollo de interfaz web responsiva que será provista por el módulo de comunicaciones
+para la configuración.
+\item Diseño de hardware para el sistema.
+\item Prototipo funcional.
+No estará contemplado por este proyecto:
+\item El software de PC de análisis de la información recolectada.
+\end{itemize}
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
-
+Para el presente proyecto se consideran con los siguientes supuestos:
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item Para el desarrollo del módulo principal se utilizará una solución microprocesada basada en
+EDU-CIA, debido que se tiene disponibilidad de la misma y posee un procesador de tipo,
+arquitectura y modelos ampliamente utilizados en proyectos de sistemas embebidos.
+\item Para el desarrollo del módulo de comunicaciones WIFI se utilizará una solución basada un módulo de la familia ESP32, debido a que es ampliamente utilizado en internet de las cosas, y como interfaces integrantes de soluciones de sistemas embebidos.
 \end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
-
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
-
+Los requerimientos para el presente proyecto son los enumerados abajo:
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
-	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
-	\end{enumerate}
-\item Grupo de requerimientos asociados con...
-	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
-	\end{enumerate}
+\item Grupo de requerimientos del subsistema de medición de ruido acústico.
+  \begin{enumerate}
+  \item Adecuación del nivel de señal de audio capatado por el micrófono para mejorar el rango dinámico en la digitalización de la señal por parte del conversor ADC.
+  \item Obtención del nivel de ruido acústico  mediante el procesamiento digital de la señal digital proveniente del conversor ADC.
+  \item Envío de los niveles de ruido acústico en tiempo real a un servidor remoto por paquetes MQTT mediante protocolo seguro (TLS).
+  \item Almacenamiento local de los datos enviados (backup)
+  \item Actualización del {\em firmware\/} completo por WIFI.  \item Configuración general del subsistema por página web.
+  \item Configuración general del sistema por mensajes MQTT.
+  \end{enumerate}
+  
+\item Grupo de requerimientos del subsistema de
+control automático de ganacia.
+  \begin{enumerate}
+  \item Ajuste automático del nivel de ganancia del amplificador interno de audio en tiempo real en función de los valores de ruido ambiente reportados y de los valores de la configuración.
+  \item Actualización del {\em firmware\/} completo por WIFI.
+  \item Configuración general del subsistema por página web.
+  \item Configuración general del sistema por mensajes MQTT.
+  \end{enumerate}
+  
+\item Requerimientos generales
+  \begin{enumerate}
+  \item La alimentación deberá ser de 5V continua.
+  \end{enumerate}
+\item Grupo de requerimientos referidos a la interfaz de usuario.
+  \begin{enumerate}
+  \item Se deberá poder visualizar en la interfaz WIFI el estado del dispositivo, memoria disponible, valores de configuración, etc.
+  \item Se deberá poder configurar ciertos parámetros de configuración funcionales como
+ser la calibración del nivel de ruido acústico.
+  \item Se deberá poder configurar parámetros de configuración referente a la conexión WIFI
+(Red, Tópico, Usuario y Clave del Servidor MQTT, Certificado SSL, etc).
+  \item Se deberá poder descargar las capturas en formato CSV de forma total o por rango
+temporal.
+  \end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
@@ -289,65 +251,64 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
 \begin{itemize}
-\item Manual de uso
-\item Diagrama esquemático
-\item Código fuente
-\item Diagrama de instalación
-\item Informe final
-
+\item Manual de uso.
+\item Código fuente de firmware del módulo principal y de comunicaciones de todos los subsistemas.
+\item Diseño de hardware de todos los subsistemas.
+\item Documentación de arquitectura y diseño para transferencia de conocimiento que posibilite
+futuras mejoras por parte del cliente.
 \end{itemize}
-
-\end{consigna}
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Grupo de tareas iniciales
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Realizar el plan del proyecto (12 hs).
+	\item Ingeniería de detalle: se buscan los componentes electrónicos apropiados para la solución propuesta y se realizan las elecciones de los mismos. (24 hs)
+	\item Investigar sobre procesamiento digital de señales de audio y elegir la mejor solución para la solución propuesta. (12 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Grupo de tareas de la construcción de hardware
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Diseño del hardware: Se realiza el diseño de la placa electrónica, el diagrama de
+bloques detallado y los esquemáticos necesarios. (40 hs)
+    \item Simulación del hardware: Se realiza la simulación del hardware diseñado para encontrar los valores óptimos de los componentes analógicos. (24 hs)
+    \item Ruteo de pistas del PCB: Diseño de las placas PCB necesarias, mejoramiento de las especificaciones en función de los parámetros electrónicos y su adecuación para manufacturabilidad. (40 hs)
+    \item Compra de componentes: Se buscará que todos los componentes electrónicos se encuentren en el mercado local. El tiempo puede ser mayor ante la necesidad de importarlos por falta de disponibilidad local. (4 hs + 30 días)
+    \item Fabricación del PCB: Como el proyecto es un prototipo se realizará la manufactura artesanal del PCB. (12 hs).
+    \item Montaje hardware: Montaje de componentes, soldadura manual y posiblemente en horno de los componentes SMD. (20 hs)
+    \item Verificación hardware: Se realizan las pruebas neesarias sobre las placas armadas para asegurar su confiabilidad. (8 hs).
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Grupo de tareas de la construcción del software
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Diseño del software: Se realizan el documentos de requerimientos de software, el documento de arquitectura de software y se documenta la planificación del trabajo para seguir un desarrollo guiado por comportamiento. (24 hs)
+    \item Implementación y testing del módulo de comunicaciones WIFI: Se realiza la integración de varias bibliotecas (protocoplo MQTT, protocolo HTTP, capa de seguridad TLS, etc). (8 hs).
+    \item Maquetado e implementación de páginas Web: Se realiza el armado de las páginas Web para la configuración de distintos módulos y la presentación de información del sistema. (16 hs).
+    \item Implementación del módulo de procesamiento digital de audio: Se realiza la implementación de filtros para la adecuación de la señal de audio digitalizada y la implemtación de algoritmos de procesamiento digital como FFT y otros. (40 hs).
+    \item Módulo de ganancia automática: Implementación del módulo que a partir de los datos de ruido acústico y de configuración, entrega el nivel de ganancia a aplicar al amplificador analógico. (8 hs)
+    \item Módulo de almacenamiento: Se reañliza la implementación del driver del filesystem de
+memoria SD para almacenar el respaldos de los datos enviados por MQTT. (40 hs)
+        \item Integración del sistema: Se realiza la implementación de las pruebas de integración de los distintos subsistemas y se llevan a cabo. Luego se integran todos los módulos. (40 hs)
 	\end{enumerate}
+\item Grupo de tareas de integración y validación
+    \begin{enumerate}
+    \item Integración Software con Hardware: Se integra el software funcionando en el
+hardware manufacturado. (24 hs).
+    \item Validación: Se realizan validaciones del producto, incluyendo pruebas de campo. (40
+hs)
+    \item Documentación: Se integrará la documentación tanto de las etapas de la fabricación
+del producto, como los archivos de diseño. Adicionalmente se confeccionara los
+manuales de uso del producto. (32 hs)
+    \item Presentación: Se elaborará la presentación final del proyecto. (32 hs)
+    \end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: (524 hs de trabajo + 30 días calendario de demora)
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
-
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
 
 \begin{figure}[htpb]
 \centering 
@@ -355,11 +316,6 @@ Armar el AoN a partir del WBS definido en la etapa anterior.
 \caption{Diagrama en \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
 
 
 \section{8. Diagrama de Gantt}
@@ -429,23 +385,12 @@ En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realiza
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
-
 \begin{table}[htpb]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
+\multicolumn{•}{•}{•}umn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
@@ -476,7 +421,7 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
+\multicolumn{1}{|l|}{} & asdfsdaf
    &
    &
    \\ \hline
